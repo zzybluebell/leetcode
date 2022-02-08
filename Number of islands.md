@@ -1,0 +1,60 @@
+# Number of islands
+
+## link: https://leetcode.com/problems/number-of-islands/
+
+
+
+**Q&A: Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.**
+
+**An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.**
+
+
+
+
+**Hint:**
+
+1. 运用BFS 或者 DFS 利用recessive 的方法去向上下左右哥哥方向search 1；
+
+2. 如果是0 就return
+3. 如果是1 recessive find 
+4. 注意边界条件
+
+
+```java
+
+
+
+class Solution {
+    public int numIslands(char[][] grid) {
+        
+        int count = 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        for (int i = 0; i< m; i++) {
+            
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1' ) {
+                    find(grid, m, n, i, j);
+                    count ++;
+                }
+            }
+            
+        }
+        return count;
+    }
+    
+    public void find (char[][] grid, int m, int n, int i, int j) {
+        if (i < 0 || j < 0 || i >= m || j >= n || grid[i][j] == '0'){
+            return ;
+        }
+        grid[i][j] = '0';
+        find(grid, m, n, i+1 , j);
+        find(grid, m, n, i , j+1);
+        find(grid, m, n, i-1 , j);
+        find(grid, m, n, i , j-1);
+        
+        
+        
+    }
+}
+```
