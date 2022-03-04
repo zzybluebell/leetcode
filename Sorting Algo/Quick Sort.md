@@ -3,7 +3,7 @@
 ```java
 
 public void quickSort(int[] nums) {
-    partition(nums, 0, nums.length);
+    partition(nums, 0, nums.length - 1);
 }
 
 //挖坑法
@@ -17,13 +17,13 @@ public void partition(int[] nums, int left, int right) {
         while (i < j && nums[j] > pviot)
             j--;
         if (i< j) {
-            nums[j] = nums[i];
+            nums[i] = nums[j];
             i++;
         }
         while (i < j && nums[i] < pviot)
             i++;
         if (i< j) {
-            nums[i] = nums[j];
+            nums[j] = nums[i];
             j --;
         }
     }
